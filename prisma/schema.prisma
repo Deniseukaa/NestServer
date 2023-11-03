@@ -19,6 +19,7 @@ model User {
   documents String?
   room      Room? @relation(fields: [room_id], references: [id])
   room_id   Int?
+  role      ROLE @default(STUDENT)
 }
 
 model Dormitory {
@@ -37,4 +38,9 @@ model Room {
    dormitory  Dormitory @relation(fields: [dormitory_id], references: [id])
    dormitory_id Int
    users User[]
+}
+
+enum ROLE {
+  ADMIN
+  STUDENT
 }
