@@ -15,6 +15,7 @@ model User {
   name      String
   surname   String
   email     String   @unique
+  password  String
   address   String?
   documents String?
   room      Room? @relation(fields: [room_id], references: [id])
