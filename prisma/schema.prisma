@@ -16,11 +16,15 @@ model User {
   surname   String
   email     String   @unique
   password  String
+  refreshToken String?
   address   String?
   documents String?
   room      Room? @relation(fields: [room_id], references: [id])
   room_id   Int?
   role      ROLE @default(STUDENT)
+  stripeId  String? @unique
+  subscriptionId String? @unique
+  confirmed Boolean @default(false)
 }
 
 model Dormitory {
@@ -30,6 +34,7 @@ model Dormitory {
   latitude  Float
   street    String
   rooms     Room[]
+  photo     String?
 }
 
 model Room {
